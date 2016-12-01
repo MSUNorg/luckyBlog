@@ -3,10 +3,7 @@
  */
 package com.msun.luckyBlog.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.msun.luckyBlog.persistence.domain.BlogView;
 import com.msun.luckyBlog.persistence.domain.Info;
 import com.msun.luckyBlog.persistence.service.BlogSer;
 import com.msun.luckyBlog.persistence.service.FileUploadSer;
@@ -41,68 +38,64 @@ public class FontEndController {
     private FileUploadSer fileUploadSer;
 
     @GetMapping("/archives/{page}")
-    public String archives(@PathVariable int page, Model model) {
-        model.addAttribute("info", infoSer.getInfo());
-        model.addAttribute("archives", blogSer.getArchive(page));
-        model.addAttribute("pageNum", blogSer.getArchiveNum());
-        model.addAttribute("current", page);
-        return "archives";
+    public ModelAndView archives(@PathVariable int page) {
+        return new ModelAndView("archives")//
+        .addObject("info", infoSer.getInfo())//
+        .addObject("archives", blogSer.getArchive(page))//
+        .addObject("pageNum", blogSer.getArchiveNum())//
+        .addObject("current", page);
     }
 
     @GetMapping("/projects")
-    public String projects(Model model) {
-        model.addAttribute("info", infoSer.getInfo());
-        return "projects";
+    public ModelAndView projects() {
+        return new ModelAndView("projects")//
+        .addObject("info", infoSer.getInfo());
     }
 
     @GetMapping("/projects/{page}")
-    public String projectPage(@PathVariable int page, Model model) {
-        model.addAttribute("info", infoSer.getInfo());
-        model.addAttribute("projects", projectSer.getPros(page));
-        model.addAttribute("pageNum", projectSer.getPageNum());
-        model.addAttribute("current", page);
-        return "projects";
+    public ModelAndView projectPage(@PathVariable int page) {
+        return new ModelAndView("projects")//
+        .addObject("info", infoSer.getInfo())//
+        .addObject("projects", projectSer.getPros(page))//
+        .addObject("pageNum", projectSer.getPageNum())//
+        .addObject("current", page);
     }
 
     @GetMapping("/tags")
-    public String tags(Model model) {
-        model.addAttribute("info", infoSer.getInfo());
-        model.addAttribute("tags", blogSer.getTagList());
-        return "tags";
+    public ModelAndView tags() {
+        return new ModelAndView("tags")//
+        .addObject("info", infoSer.getInfo())//
+        .addObject("tags", blogSer.getTagList());
     }
 
     @GetMapping("/tags/{tagName}")
-    public String tagName(@PathVariable String tagName, Model model) {
-        model.addAttribute("info", infoSer.getInfo());
-        List<BlogView> views = blogSer.getBlogByTag(tagName);
-        model.addAttribute("views", views);
-        model.addAttribute("tagName", tagName);
-        return "tagView";
+    public ModelAndView tagName(@PathVariable String tagName) {
+        return new ModelAndView("tagView")//
+        .addObject("info", infoSer.getInfo())//
+        .addObject("views", blogSer.getBlogByTag(tagName))//
+        .addObject("tagName", tagName);
     }
 
     @GetMapping("/about")
-    public String about(Model model, HttpServletResponse response) {
-        model.addAttribute("info", infoSer.getInfo());
-        model.addAttribute("resume", infoSer.getResumeView());
-        return "about";
+    public ModelAndView about() {
+        return new ModelAndView("about")//
+        .addObject("info", infoSer.getInfo())//
+        .addObject("resume", infoSer.getResumeView());
     }
 
     @GetMapping("/post/{id}")
-    public String post(@PathVariable int id, Model model) {
-        model.addAttribute("info", infoSer.getInfo());
-        BlogView blogView = blogSer.getBlog(id);
-        BlogView prev = blogSer.getPrevBlog(id);
-        BlogView next = blogSer.getNextBlog(id);
-        model.addAttribute("prev", prev);
-        model.addAttribute("next", next);
-        model.addAttribute("article", blogView.getArticle());
-        return "post";
+    public ModelAndView post(@PathVariable int id) {
+        return new ModelAndView("post")//
+        .addObject("info", infoSer.getInfo())//
+        .addObject("prev", blogSer.getPrevBlog(id))//
+        .addObject("next", blogSer.getNextBlog(id))//
+        .addObject("article", blogSer.getBlog(id).getArticle());
     }
 
     @GetMapping("/")
-    public String welcome(Model model) {
-        model.addAttribute("info", infoSer.getInfo());
-        return "index";
+    public ModelAndView welcome() {
+        return new ModelAndView("index")//
+        .addObject("info", infoSer.getInfo());
     }
 
     @GetMapping("/login")
@@ -134,7 +127,7 @@ public class FontEndController {
 
     @GetMapping(value = "/pic/{dir}/{picName:.+}")
     public ResponseEntity<byte[]> gainUserAvatar(@PathVariable String dir, @PathVariable String picName)
-                                                                                                        throws RuntimeException {
+                                                                                                        throws Exception {
         return fileUploadSer.gainPic(dir, picName);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.msun.luckyBlog.persistence.domain.BlogView;
 import com.msun.luckyBlog.persistence.domain.Info;
@@ -35,9 +36,9 @@ public class AdminController {
     private FileUploadSer uploadSer;
 
     @GetMapping("/")
-    public String monitor(Model model, HttpServletRequest request) {
-        model.addAttribute("freeMemory", monitorSer.getFreeMemory());
-        return "admin/monitor";
+    public ModelAndView monitor() {
+        return new ModelAndView("admin/monitor")//
+        .addObject("freeMemory", monitorSer.getFreeMemory());
     }
 
     @PostMapping("/file/uplPic.action")
@@ -47,19 +48,18 @@ public class AdminController {
     }
 
     @PostMapping("/file/uplAva.action")
-    public String uploadAva(HttpServletRequest request, Model model) {
-        Info info = uploadSer.updateAvatar(request);
-        model.addAttribute("info", info);
-        return "admin/info";
+    public ModelAndView uploadAva(HttpServletRequest request) {
+        return new ModelAndView("admin/info")//
+        .addObject("info", uploadSer.updateAvatar(request));
     }
 
     // ************************************************************************************//
     @GetMapping("/project/{page}")
-    public String project(@PathVariable int page, Model model) {
-        model.addAttribute("current", page);
-        model.addAttribute("pageNum", projectSer.adminGetPageNum());
-        model.addAttribute("proList", projectSer.adminGetPros(page));
-        return "admin/project";
+    public ModelAndView project(@PathVariable int page) {
+        return new ModelAndView("admin/project")//
+        .addObject("current", page)//
+        .addObject("pageNum", projectSer.adminGetPageNum())//
+        .addObject("proList", projectSer.adminGetPros(page));
     }
 
     @PostMapping("/addPro.action")
@@ -177,20 +177,19 @@ public class AdminController {
      * @return templates下的admin/blog_list.vm页面
      */
     @GetMapping("/blogList/{page}")
-    public String blogList(@PathVariable int page, Model model) {
-        model.addAttribute("current", page);
-        model.addAttribute("pageNum", blogSer.adminGetPageNum());
-        model.addAttribute("blogList", blogSer.getBlogPage(page));
-        return "admin/blog_list";
+    public ModelAndView blogList(@PathVariable int page) {
+        return new ModelAndView("admin/blog_list")//
+        .addObject("current", page)//
+        .addObject("pageNum", blogSer.adminGetPageNum())//
+        .addObject("blogList", blogSer.getBlogPage(page));
     }
 
     // ***************************************************************************************//
 
     @GetMapping("/info")
-    public String info(Model model) {
-        Info info = infoSer.getInfo();
-        model.addAttribute("info", info);
-        return "admin/info";
+    public ModelAndView info() {
+        return new ModelAndView("admin/info")//
+        .addObject("info", infoSer.getInfo());
     }
 
     @PostMapping("/info.action")
@@ -216,9 +215,9 @@ public class AdminController {
     }
 
     @GetMapping("/resume")
-    public String resume(Model model) {
-        model.addAttribute("md", infoSer.getResumeMd());
-        return "admin/resume";
+    public ModelAndView resume() {
+        return new ModelAndView("admin/resume")//
+        .addObject("md", infoSer.getResumeMd());
     }
 
     @PostMapping("/resume.action")
