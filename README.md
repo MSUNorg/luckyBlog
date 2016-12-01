@@ -2,7 +2,7 @@
 响应式个人博客网站
 
 ### 技术栈
-* 后端：`SpringBoot`, `Mybatis`, `Mysql`, `velocity`, `ehcache`
+* 后端：`SpringBoot`, `Mybatis`, `Mysql`, `velocity`, `ehcache`, `druid`
 * 前端：`html`, `css`, `javascript`, `jQuery`
 * 构建：`Maven`
 
