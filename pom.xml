@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.msun.lucky</groupId>
-	<artifactId>blog</artifactId>
+	<artifactId>lucky-blog</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -41,14 +41,10 @@
 			<id>Lawrence-zxc-maven-repo</id>
 			<url>https://raw.githubusercontent.com/Lawrence-zxc/maven-repo/master/repository</url>
 		</repository>
-		<repository>
-			<id>lamfire-repos</id>
-			<url>http://m2.lamfire.com:8081/nexus/content/repositories/lamfire/</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
-		<!-- use tomcat boot -->
+		<!-- use undertow boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -97,6 +93,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
 		<!-- template -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -130,7 +127,6 @@
 			<version>1.0.18</version>
 			<type>jar</type>
 		</dependency>
-
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
