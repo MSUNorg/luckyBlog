@@ -23,12 +23,8 @@ import com.msun.luckyBlog.persistence.mapper.ProjectMapper;
 @Service
 public class ProjectSer {
 
-    private ProjectMapper projectMapper;
-
     @Autowired
-    public ProjectSer(ProjectMapper projectMapper) {
-        this.projectMapper = projectMapper;
-    }
+    private ProjectMapper projectMapper;
 
     // 前端project页面获取项目列表
     @Cacheable(value = "projects", condition = "#page==1", key = "1")

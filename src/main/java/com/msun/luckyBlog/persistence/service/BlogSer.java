@@ -20,7 +20,6 @@ import com.msun.luckyBlog.persistence.domain.Archive;
 import com.msun.luckyBlog.persistence.domain.BlogView;
 import com.msun.luckyBlog.persistence.mapper.BlogMapper;
 import com.msun.luckyBlog.support.MSUNUtils;
-import com.msun.luckyBlog.support.exception.CtrlExceptionHandler;
 
 /**
  * @author zxc Dec 1, 2016 6:37:45 PM
@@ -28,14 +27,10 @@ import com.msun.luckyBlog.support.exception.CtrlExceptionHandler;
 @Service
 public class BlogSer {
 
-    static final Logger log = LoggerFactory.getLogger(CtrlExceptionHandler.class);
-
-    private BlogMapper  blogMapper;
+    static final Logger log = LoggerFactory.getLogger(BlogSer.class);
 
     @Autowired
-    public BlogSer(BlogMapper blogMapper) {
-        this.blogMapper = blogMapper;
-    }
+    private BlogMapper  blogMapper;
 
     // 后台管理中更新博客时获取博客的markdown文本，title，tags
     public BlogView adminGetBlog(int vid) {

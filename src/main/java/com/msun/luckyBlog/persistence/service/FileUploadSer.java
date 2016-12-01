@@ -22,7 +22,6 @@ import com.msun.luckyBlog.persistence.domain.Info;
 import com.msun.luckyBlog.persistence.domain.SystemSetting;
 import com.msun.luckyBlog.persistence.domain.UploadPic;
 import com.msun.luckyBlog.support.FileTools;
-import com.msun.luckyBlog.support.exception.CtrlExceptionHandler;
 
 /**
  * @author zxc Dec 1, 2016 6:37:51 PM
@@ -30,20 +29,14 @@ import com.msun.luckyBlog.support.exception.CtrlExceptionHandler;
 @Service
 public class FileUploadSer {
 
-    static final Logger   log = LoggerFactory.getLogger(CtrlExceptionHandler.class);
-
-    private InfoSer       infoSer;
-
-    private SystemSetting setting;
+    static final Logger   log = LoggerFactory.getLogger(FileUploadSer.class);
 
     @Autowired
-    public FileUploadSer(InfoSer infoSer, SystemSetting setting) {
-        this.infoSer = infoSer;
-        this.setting = setting;
-    }
+    private InfoSer       infoSer;
+    @Autowired
+    private SystemSetting setting;
 
     public UploadPic uploadPic(HttpServletRequest request) {
-
         String picUrl = "";
         try {
             picUrl = FileTools.updatePic("/pic/", setting.getPicHome(), request);
