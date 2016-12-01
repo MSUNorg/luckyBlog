@@ -1,7 +1,12 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.domain;
 
 /**
  * 上传图片回显提示的实体类
+ * 
+ * @author zxc Dec 1, 2016 6:37:00 PM
  */
 public class UploadPic {
 

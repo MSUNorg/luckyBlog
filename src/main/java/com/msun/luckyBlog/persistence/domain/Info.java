@@ -1,7 +1,12 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.domain;
 
 /**
- * 个人信息实体
+ * 个人信息
+ * 
+ * @author zxc Dec 1, 2016 6:36:10 PM
  */
 public class Info {
 

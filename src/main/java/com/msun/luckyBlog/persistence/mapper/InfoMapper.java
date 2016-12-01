@@ -1,13 +1,20 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.mapper;
 
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.msun.luckyBlog.persistence.domain.Info;
 
 /**
- * mybatis的mapper
- * 映射所有个人信息操作的sql语句
+ * mybatis的mapper 映射所有个人信息操作的sql语句
+ * 
+ * @author zxc Dec 1, 2016 6:37:25 PM
  */
 @Repository
 @Mapper

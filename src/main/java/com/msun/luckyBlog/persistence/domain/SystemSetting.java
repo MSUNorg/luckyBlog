@@ -1,7 +1,12 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.domain;
 
 /**
  * 全局配置类，用于储存自定义的全局变量
+ * 
+ * @author zxc Dec 1, 2016 6:36:50 PM
  */
 public class SystemSetting {
 

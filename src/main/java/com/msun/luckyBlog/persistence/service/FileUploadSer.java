@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.service;
 
 import java.io.File;
@@ -7,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +24,9 @@ import com.msun.luckyBlog.persistence.domain.UploadPic;
 import com.msun.luckyBlog.support.FileTools;
 import com.msun.luckyBlog.support.exception.CtrlExceptionHandler;
 
+/**
+ * @author zxc Dec 1, 2016 6:37:51 PM
+ */
 @Service
 public class FileUploadSer {
 

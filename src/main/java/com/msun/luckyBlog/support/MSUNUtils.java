@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.support;
 
 import java.text.SimpleDateFormat;
@@ -8,7 +11,7 @@ import java.util.Locale;
 /**
  * @author zxc Dec 1, 2016 5:45:25 PM
  */
-public class TimeTools {
+public class MSUNUtils {
 
     private static final Calendar CALENDAR = Calendar.getInstance();
 
@@ -46,5 +49,4 @@ public class TimeTools {
         int month = CALENDAR.get(Calendar.MONTH);
         return year + "" + month;
     }
-
 }

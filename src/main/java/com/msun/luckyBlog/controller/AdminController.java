@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2020 uuzu.com All right reserved.
+ * Copyright 2015-2020 msun.com All right reserved.
  */
 package com.msun.luckyBlog.controller;
 
@@ -10,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.msun.luckyBlog.persistence.domain.*;
+import com.msun.luckyBlog.persistence.domain.BlogView;
+import com.msun.luckyBlog.persistence.domain.Info;
+import com.msun.luckyBlog.persistence.domain.Project;
+import com.msun.luckyBlog.persistence.domain.UploadPic;
 import com.msun.luckyBlog.persistence.service.*;
 
 /**

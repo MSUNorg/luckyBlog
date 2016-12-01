@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.service;
 
 import java.sql.Date;
@@ -16,10 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.msun.luckyBlog.persistence.domain.Archive;
 import com.msun.luckyBlog.persistence.domain.BlogView;
 import com.msun.luckyBlog.persistence.mapper.BlogMapper;
-import com.msun.luckyBlog.support.TimeTools;
-import com.msun.luckyBlog.support.Tools;
+import com.msun.luckyBlog.support.MSUNUtils;
 import com.msun.luckyBlog.support.exception.CtrlExceptionHandler;
 
+/**
+ * @author zxc Dec 1, 2016 6:37:45 PM
+ */
 @Service
 public class BlogSer {
 
@@ -159,7 +164,7 @@ public class BlogSer {
             BlogView view = blogMapper.selectTagView(vid);
             if (view != null) {
                 view.setVid(vid);
-                String monthDay = TimeTools.getEdate(view.getDate());
+                String monthDay = MSUNUtils.getEdate(view.getDate());
                 view.setMonthDay(monthDay);
                 views.add(view);
             }
@@ -172,8 +177,8 @@ public class BlogSer {
         Map<Integer, Archive> years2Ar = new HashMap<>();
         for (BlogView view : views) {
             Date date = view.getDate();
-            view.setMonthDay(TimeTools.getEdate(date));
-            int year = TimeTools.getYear(date);
+            view.setMonthDay(MSUNUtils.getEdate(date));
+            int year = MSUNUtils.getYear(date);
             if (years2Ar.containsKey(year)) {
                 years2Ar.get(year).getList().add(view);
             } else {
@@ -187,7 +192,7 @@ public class BlogSer {
     }
 
     private void addViewTag(String tagStr, int vid) {
-        List<String> tagList = Tools.getTagList(tagStr);
+        List<String> tagList = getTagList(tagStr);
         for (String tag : tagList) {
             blogMapper.insertViewTag(tag, vid);
         }
@@ -195,9 +200,18 @@ public class BlogSer {
 
     private void updateViewTag(String tagStr, int vid) {
         blogMapper.deleteViewTag(vid);
-        List<String> tagList = Tools.getTagList(tagStr);
+        List<String> tagList = getTagList(tagStr);
         for (String tag : tagList) {
             blogMapper.insertViewTag(tag, vid);
         }
+    }
+
+    public static List<String> getTagList(String tagStr) {
+        List<String> tagList = new ArrayList<>();
+        StringTokenizer token = new StringTokenizer(tagStr, ",");
+        while (token.hasMoreTokens()) {
+            tagList.add(token.nextToken());
+        }
+        return tagList;
     }
 }

@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.support.exception;
 
 import org.slf4j.Logger;
@@ -10,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 全局异常处理类
+ * 
+ * @author zxc Dec 1, 2016 6:38:25 PM
  */
 @ControllerAdvice
 public class CtrlExceptionHandler {

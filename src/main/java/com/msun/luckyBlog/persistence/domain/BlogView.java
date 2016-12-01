@@ -1,9 +1,14 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.domain;
 
 import java.sql.Date;
 
 /**
  * 博客页面的存储，包括id,日期，标题和博客页面
+ * 
+ * @author zxc Dec 1, 2016 6:36:01 PM
  */
 public class BlogView {
 

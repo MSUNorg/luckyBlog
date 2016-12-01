@@ -1,7 +1,12 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.domain;
 
 /**
  * 封装反向代理服务器的路径信息
+ * 
+ * @author zxc Dec 1, 2016 6:36:41 PM
  */
 public class ReversePath {
 

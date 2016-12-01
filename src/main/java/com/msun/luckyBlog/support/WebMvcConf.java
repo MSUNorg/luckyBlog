@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.support;
 
 import java.util.Arrays;
@@ -17,6 +20,8 @@ import com.msun.luckyBlog.support.interceptor.UserSecurityInterceptor;
 
 /**
  * web页面配置类，拦截器地址在此注册
+ * 
+ * @author zxc Dec 1, 2016 6:39:26 PM
  */
 @Configuration
 public class WebMvcConf extends WebMvcConfigurerAdapter {

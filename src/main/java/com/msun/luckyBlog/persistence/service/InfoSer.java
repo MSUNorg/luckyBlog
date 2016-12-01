@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 import com.msun.luckyBlog.persistence.domain.Info;
 import com.msun.luckyBlog.persistence.mapper.InfoMapper;
 
+/**
+ * @author zxc Dec 1, 2016 6:37:57 PM
+ */
 @Service
 public class InfoSer {
 
     private static final Logger LOGGER        = LoggerFactory.getLogger(InfoSer.class);
 
-    private static final int    MODIFYPASSSUC = 0;                                         // 修改密码成功
-    private static final int    PASSERROE     = 1;                                         // 密码错误
-    private static final int    SySTEMERROE   = 2;                                         // 系统错误
+    private static final int    MODIFYPASSSUC = 0;                                     // 修改密码成功
+    private static final int    PASSERROE     = 1;                                     // 密码错误
+    private static final int    SySTEMERROE   = 2;                                     // 系统错误
 
     @Autowired
     private InfoMapper          infoMapper;

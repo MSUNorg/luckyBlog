@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.support;
 
 import static org.springframework.util.StreamUtils.copy;
@@ -18,6 +21,8 @@ import com.msun.luckyBlog.support.exception.CtrlExceptionHandler;
 
 /**
  * 文件操作工具类
+ * 
+ * @author zxc Dec 1, 2016 6:38:58 PM
  */
 public class FileTools {
 
@@ -64,18 +69,14 @@ public class FileTools {
     }
 
     public static String updatePic(String restUrl, String picHome, HttpServletRequest request) throws Exception {
-
         MultipartFile multipartFile = getMultipartFile(request);
-
         // 设置图片名称为currentTimeMillis+文件后缀
         String fileName = String.valueOf(System.currentTimeMillis()) + "."
                           + FileTools.getSuffix(multipartFile.getOriginalFilename());
         // 获取当前年月
-        String yearMonth = TimeTools.getYearMonthOfNow();
-
+        String yearMonth = MSUNUtils.getYearMonthOfNow();
         // 图片存储路径为根路径/年月。比如user/jcala/xmarket/201608
         File path = new File(picHome + File.separatorChar + yearMonth);
-
         // 合成图片在服务器上的绝对路径
         File targetFile = new File(picHome + File.separatorChar + yearMonth + File.separatorChar + fileName);
         if (!path.exists()) {

@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.service;
 
 import java.sql.Timestamp;
@@ -14,6 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.msun.luckyBlog.persistence.domain.Project;
 import com.msun.luckyBlog.persistence.mapper.ProjectMapper;
 
+/**
+ * @author zxc Dec 1, 2016 6:38:11 PM
+ */
 @Service
 public class ProjectSer {
 

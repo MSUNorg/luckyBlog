@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.service;
 
 import java.lang.management.ManagementFactory;
@@ -6,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.sun.management.OperatingSystemMXBean;
 
+/**
+ * @author zxc Dec 1, 2016 6:38:04 PM
+ */
 @SuppressWarnings("restriction")
 @Service
 public class MonitorSer {

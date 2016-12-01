@@ -1,3 +1,6 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.mapper;
 
 import java.util.List;
@@ -8,8 +11,9 @@ import org.springframework.stereotype.Repository;
 import com.msun.luckyBlog.persistence.domain.Project;
 
 /**
- * mybatis的mapper
- * 映射所有项目操作的sql语句
+ * mybatis的mapper 映射所有项目操作的sql语句
+ * 
+ * @author zxc Dec 1, 2016 6:37:33 PM
  */
 @Repository
 @Mapper

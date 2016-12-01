@@ -1,9 +1,14 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.domain;
 
 import java.util.List;
 
 /**
  * 前端页面archives显示的博客列表对应的实体
+ * 
+ * @author zxc Dec 1, 2016 6:35:53 PM
  */
 public class Archive {
 

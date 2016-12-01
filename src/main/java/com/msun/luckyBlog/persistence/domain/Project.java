@@ -1,9 +1,12 @@
+/*
+ * Copyright 2015-2020 msun.com All right reserved.
+ */
 package com.msun.luckyBlog.persistence.domain;
 
 import java.sql.Timestamp;
 
 /**
- * Created by Administrator on 2016/9/16.
+ * @author zxc Dec 1, 2016 6:36:23 PM
  */
 public class Project {
 
